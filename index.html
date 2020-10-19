@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+
+    <div id="container">
+        <div class="game-btn-container" onclick="game()">
+            <h1 class="game-btn">
+                Start
+            </h1>
+        </div>
+
+        <img src="img/bird_1.png" id="bird" class="bird"></img>
+        <img src="img/pipe_up.png" id="pipe_1" class="pipe"></img>
+        <img src="img/pipe_down.png" id="pipe_2" class="pipe"></img>
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var isDead = false;
+
+            var playerImgCounter = 0;
+            fly();
+
+            function fly() {
+                if (!isDead) {
+                    requestAnimationFrame(fly);
+                }
+
+                if (playerImgCounter == 0) {
+                    $("#bird").attr("src", "img/bird_1.png");
+                } else if (playerImgCounter == 15) {
+                    $("#bird").attr("src", "img/bird_2.png");
+                } else if (playerImgCounter == 25) {
+                    $("#bird").attr("src", "img/bird_3.png");
+                }
+
+                playerImgCounter++;
+                if (playerImgCounter == 35) {
+                    playerImgCounter = 0
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
